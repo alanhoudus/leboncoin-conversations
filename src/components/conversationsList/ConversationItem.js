@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const Conversation = ({ conversation }) => (
+const ConversationItem = ({ conversation }) => (
   <div className="conversation">
     <div className="conversation-avatar">{conversation.recipientNickname.slice(0, 1)}</div>
     <div className="conversation-infos">
@@ -10,7 +10,7 @@ const Conversation = ({ conversation }) => (
   </div>
 );
 
-Conversation.propTypes = {
+ConversationItem.propTypes = {
   conversation: PropTypes.shape({
     id: PropTypes.number.isRequired,
     lastMessageTimestamp: PropTypes.number.isRequired,
@@ -21,4 +21,4 @@ Conversation.propTypes = {
   }).isRequired,
 };
 
-export default Conversation;
+export default ConversationItem;
