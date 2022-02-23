@@ -1,14 +1,23 @@
 // == Import
-import reactLogo from './react-logo.svg';
-import './styles.css';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { getUserConversations } from '../../actions/user';
+import Conversations from '../conversationsList';
+import './styles.scss';
 
 // == Composant
-const App = () => (
-  <div className="app">
-    <img src={reactLogo} alt="react logo" />
-    <h1>Composant : App</h1>
-  </div>
-);
+const App = () => {
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(getUserConversations());
+  }, []);
+
+  return (
+    <div className="app">
+      <Conversations />
+    </div>
+  );
+};
 // == Export
 export default App;
