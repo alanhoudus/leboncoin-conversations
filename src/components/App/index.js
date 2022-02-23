@@ -1,11 +1,11 @@
 // == Import
 // hooks
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 // react-router-dom
 import { Route, Routes } from 'react-router-dom';
 // actions
-import { getUserConversations } from '../../actions/user';
+import { getUserInfo, userDataLoaded } from '../../actions/user';
 // components
 import Conversations from '../conversationsList';
 import Messages from '../messages';
@@ -14,12 +14,20 @@ import './styles.scss';
 
 // == Composant
 const App = () => {
+  const userDataIsLoading = useSelector((state) => state.userProfile.userDataIsLoading);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getUserConversations());
+    dispatch(getUserInfo());
   }, []);
 
+  useEffect(() => {
+    dispatch(userDataLoaded());
+  }, [userDataIsLoading]);
+
+  if (userDataIsLoading) {
+    return <div>Chargement ...</div>;
+  }
   return (
     <div className="app">
       <Routes>
