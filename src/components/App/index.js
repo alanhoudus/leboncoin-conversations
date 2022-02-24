@@ -32,7 +32,7 @@ const App = () => {
     <div className="app">
       <Routes>
         <Route path="/" key="conversations" element={<Conversations />} />
-        <Route path="/messages" key="messages" element={<Messages />} />
+        <Route path="/messages/:id" key="messages" element={<Messages />} />
       </Routes>
     </div>
   );

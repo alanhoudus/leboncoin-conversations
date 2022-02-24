@@ -48,4 +48,52 @@
 }
 
 @media (min-width: 768px) {
+  .messages {
+    margin: auto;
+    padding-top: 2em;
+
+    &-sender {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      color:white;
+      
+      &--name {
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+        width: 100%;
+      }
+
+      &--message {
+      border: 1px solid black;
+      border-radius: 10px;
+      padding: 1em;
+      width: 45%;
+      display: flex;
+      background: #4D4C7D;
+      }
+    }
+
+    &-recipient {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      color:white;
+      
+      &--name {
+      text-align: right;
+      margin-top: 1em;
+      margin-bottom: 0.5em;
+      width: 100%;
+      }
+
+      &--message {
+      border: 1px solid black;
+      border-radius: 10px;
+      padding: 1em;
+      width: 45%;
+      background: #827397;
+      }
+    }
+  }
 }
