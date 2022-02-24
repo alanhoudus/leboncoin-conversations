@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 // actions
 import { getUserInfo, userDataLoaded } from '../../actions/user';
+import { getUsersList } from '../../actions/users';
 // components
 import Conversations from '../conversationsList';
 import Messages from '../messages';
@@ -19,6 +20,7 @@ const App = () => {
 
   useEffect(() => {
     dispatch(getUserInfo());
+    dispatch(getUsersList());
   }, []);
 
   useEffect(() => {

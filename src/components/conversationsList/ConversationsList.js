@@ -8,7 +8,7 @@ const ConversationsList = ({ userConversations }) => (
   ))
 );
 
-ConversationsList.protoTypes = {
+ConversationsList.propTypes = {
   userConversations: PropTypes.arrayOf(
     PropTypes.shape({
       conversation: PropTypes.shape({
