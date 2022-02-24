@@ -1,16 +1,20 @@
 // imports
-
+// hooks
+import { useSelector } from 'react-redux';
 // proptypes
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
+// selectors
+import findUser from '../../selectors/users';
 
 const Message = ({ message }) => {
   const currentUserId = useSelector((state) => state.userProfile.userId);
+  const usersList = useSelector((state) => state.users.usersList);
+  const username = findUser(usersList, message.authorId);
   const author = message.authorId === currentUserId ? 'recipient' : 'sender';
 
   return (
     <div className={`messages-${author}`}>
-      <div className={`messages-${author}--name`}>{message.authorId}</div>
+      <div className={`messages-${author}--name`}>{username}</div>
       <div className={`messages-${author}--message`}>{message.body}</div>
     </div>
   );
