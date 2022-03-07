@@ -1,9 +1,11 @@
 /* eslint-disable no-console */
 import axios from 'axios';
 import {
+  getConversationMessages,
   GET_CONVERSATION_MESSAGES,
   messagesLoaded,
   saveConversationMessages,
+  SEND_NEW_MESSAGE,
 } from '../actions/messages';
 
 const messagesMiddleware = (store) => (next) => (action) => {
@@ -22,7 +24,25 @@ const messagesMiddleware = (store) => (next) => (action) => {
           console.log(error);
         });
       break;
-
+    case SEND_NEW_MESSAGE:
+      axios.post(
+        // URL
+        `http://localhost:3005/messages/${action.id}`,
+        {
+          body: action.newMessage,
+          timestamp: 0,
+          conversationId: action.id,
+          authorId: store.getState().userProfile.userId,
+        },
+      )
+        .then((response) => {
+          console.log(response);
+          store.dispatch(getConversationMessages(action.id));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      break;
     default:
   }
   next(action);

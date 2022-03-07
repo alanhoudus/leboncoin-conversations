@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 // react-router-dom
 import { useParams } from 'react-router-dom';
 // actions
-import { getConversationMessages, updateFieldValue } from '../../actions/messages';
+import { getConversationMessages, sendNewMessage, updateFieldValue } from '../../actions/messages';
 // components
 import MessagesList from './MessagesList';
 import Input from '../input';
@@ -29,17 +29,24 @@ const Messages = () => {
   return (
     <div className="messages">
       <MessagesList conversationMessages={conversationMessages} />
-      <Input
-        className="messages-input"
-        type="text"
-        name="newMessageInput"
-        id="newMessageInput"
-        value={newMessageInput}
-        onChange={(newValue, identifier) => {
-          const action = updateFieldValue(identifier, newValue);
-          dispatch(action);
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          dispatch(sendNewMessage(id, newMessageInput));
         }}
-      />
+      >
+        <Input
+          className="messages-input"
+          type="text"
+          name="newMessageInput"
+          id="newMessageInput"
+          value={newMessageInput}
+          onChange={(newValue, identifier) => {
+            const action = updateFieldValue(identifier, newValue);
+            dispatch(action);
+          }}
+        />
+      </form>
     </div>
   );
 };
