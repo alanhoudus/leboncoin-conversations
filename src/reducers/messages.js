@@ -1,4 +1,9 @@
-import { MESSAGES_LOADED, SAVE_CONVERSATION_MESSAGES, UPDATED_FIELD_VALUE } from '../actions/messages';
+import {
+  MESSAGES_LOADED,
+  SAVE_CONVERSATION_MESSAGES,
+  SEND_NEW_MESSAGE,
+  UPDATED_FIELD_VALUE,
+} from '../actions/messages';
 
 export const initialState = {
   messagesAreLoading: true,
@@ -12,6 +17,11 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         [action.identifier]: action.newValue,
+      };
+    case SEND_NEW_MESSAGE:
+      return {
+        ...state,
+        newMessageInput: '',
       };
     case MESSAGES_LOADED:
       return {

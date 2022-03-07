@@ -40,6 +40,7 @@ const Messages = () => {
           type="text"
           name="newMessageInput"
           id="newMessageInput"
+          placeholder="Envoyer un message..."
           value={newMessageInput}
           onChange={(newValue, identifier) => {
             const action = updateFieldValue(identifier, newValue);

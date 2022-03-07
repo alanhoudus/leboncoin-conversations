@@ -30,8 +30,8 @@ const messagesMiddleware = (store) => (next) => (action) => {
         `http://localhost:3005/messages/${action.id}`,
         {
           body: action.newMessage,
-          timestamp: 0,
-          conversationId: action.id,
+          timestamp: Date.now(),
+          conversationId: parseInt(action.id),
           authorId: store.getState().userProfile.userId,
         },
       )
