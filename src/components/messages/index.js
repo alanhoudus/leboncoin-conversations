@@ -2,8 +2,10 @@
 // hooks
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
+// react-feather
+import { Send, ArrowLeft } from 'react-feather';
 // react-router-dom
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 // actions
 import { getConversationMessages, sendNewMessage, updateFieldValue } from '../../actions/messages';
 // components
@@ -28,6 +30,13 @@ const Messages = () => {
   }
   return (
     <div className="messages">
+      <Link
+        to="/"
+      >
+        <ArrowLeft
+          size="34"
+        />
+      </Link>
       <MessagesList conversationMessages={conversationMessages} />
       <form
         onSubmit={(e) => {
@@ -35,18 +44,27 @@ const Messages = () => {
           dispatch(sendNewMessage(id, newMessageInput));
         }}
       >
-        <Input
+        <div
           className="messages-input"
-          type="text"
-          name="newMessageInput"
-          id="newMessageInput"
-          placeholder="Envoyer un message..."
-          value={newMessageInput}
-          onChange={(newValue, identifier) => {
-            const action = updateFieldValue(identifier, newValue);
-            dispatch(action);
-          }}
-        />
+        >
+          <Input
+            className="messages-input--text"
+            type="text"
+            name="newMessageInput"
+            id="newMessageInput"
+            placeholder="Envoyer un message..."
+            value={newMessageInput}
+            onChange={(newValue, identifier) => {
+              const action = updateFieldValue(identifier, newValue);
+              dispatch(action);
+            }}
+          />
+          <Send
+            className="messages-input--icon"
+            color="plum"
+            size="26"
+          />
+        </div>
       </form>
     </div>
   );

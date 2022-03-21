@@ -4,7 +4,7 @@ import MessageItem from './MessageItem';
 
 const MessagesList = ({ conversationMessages }) => {
   if (conversationMessages.length === 0) {
-    return <div>Vous n'avez encore aucun message !</div>;
+    return <div className="messages-none">Vous n'avez encore aucun message !</div>;
   }
   return (
     conversationMessages.map((message) => (
