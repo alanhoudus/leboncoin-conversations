@@ -30,13 +30,22 @@ const Messages = () => {
   }
   return (
     <div className="messages">
-      <Link
-        to="/"
+      <div
+        className="messages-infos"
       >
-        <ArrowLeft
-          size="34"
-        />
-      </Link>
+        <Link
+          to="/"
+        >
+          <ArrowLeft
+            size="34"
+          />
+        </Link>
+        <div
+          className="messages-infos--conversation"
+        >
+          Conversation avec
+        </div>
+      </div>
       <MessagesList conversationMessages={conversationMessages} />
       <form
         onSubmit={(e) => {

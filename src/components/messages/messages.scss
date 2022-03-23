@@ -7,6 +7,17 @@
       text-align: center;
     }
 
+    &-infos {
+      border-bottom: 1px solid black;
+      display: flex;
+      align-items: center;
+
+      &--conversation {
+        margin-left: 5em;
+        color: navajowhite;
+      }
+    }
+
     &-sender {
       display: flex;
       flex-wrap: wrap;
@@ -79,6 +90,17 @@
       text-align: center;
     }
 
+    &-infos {
+      border-bottom: 1px solid black;
+      display: flex;
+      align-items: center;
+
+      &--conversation {
+        margin-left: 5em;
+        color: navajowhite;
+      }
+    }
+
     &-sender {
       display: flex;
       flex-wrap: wrap;
@@ -98,6 +120,7 @@
       width: 45%;
       display: flex;
       background: #4D4C7D;
+      box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
       
       }
     }
@@ -121,6 +144,7 @@
       padding: 1em;
       width: 45%;
       background: #827397;
+      box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
       }
     }
 

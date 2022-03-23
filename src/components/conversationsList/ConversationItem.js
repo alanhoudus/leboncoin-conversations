@@ -1,23 +1,30 @@
 // imports
 // react-router-dom
 import { Link } from 'react-router-dom';
+// hooks
+import { useSelector } from 'react-redux';
 // proptypes
 import PropTypes from 'prop-types';
+// selectors
+import timestampToDate from '../../selectors/messages';
 
-const ConversationItem = ({ conversation }) => (
-  <Link
-    to={`/messages/${conversation.id}`}
-    key={conversation.id}
-  >
-    <div className="conversation">
-      <div className="conversation-avatar">{conversation.recipientNickname.slice(0, 1)}</div>
-      <div className="conversation-infos">
-        <div className="conversation-infos--name">Conversation avec {conversation.recipientNickname}</div>
-        <div className="conversation-infos--date">{conversation.lastMessageTimestamp}</div>
+const ConversationItem = ({ conversation }) => {
+  const activeUserId = useSelector((state) => state.userProfile.userId);
+  return (
+    <Link
+      to={`/messages/${conversation.id}`}
+      key={conversation.id}
+    >
+      <div className="conversation">
+        <div className="conversation-avatar">{activeUserId === conversation.recipientId ? conversation.senderNickname.slice(0, 1) : conversation.recipientNickname.slice(0, 1)}</div>
+        <div className="conversation-infos">
+          <div className="conversation-infos--name">Conversation avec {activeUserId === conversation.recipientId ? conversation.senderNickname : conversation.recipientNickname}</div>
+          <div className="conversation-infos--date">Dernier message le {timestampToDate(conversation.lastMessageTimestamp)}</div>
+        </div>
       </div>
-    </div>
-  </Link>
-);
+    </Link>
+  );
+};
 
 ConversationItem.propTypes = {
   conversation: PropTypes.shape({
