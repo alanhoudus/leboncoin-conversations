@@ -1,0 +1,82 @@
+@media (max-width: 768px) {
+  .modal {
+    position: fixed;
+    top: 5%;
+    z-index: 10;
+    background-color: rgb(143, 160, 253);
+    border: 1px solid black;
+    border-radius: 5%;
+    padding: 2em;
+    width: 90%;
+    height: 90%;
+
+    &-close {
+      position: absolute;
+      right: 3%;
+      top: 2%;
+    }
+
+    &-item {
+      border: 1px solid black;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      margin-top: 3em;
+      padding: 1em;
+      border-radius: 5px;
+      text-align: center;
+      font-size: larger;
+    }
+
+    &-item:hover {
+      zoom: 10%;
+    }
+  }
+
+}
+
+@media (min-width: 768px) {
+  .modal {
+    position: fixed;
+    left: 25%;
+    top: 5%;
+    z-index: 10;
+    background-color: rgb(143, 160, 253);
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 2em;
+    width: 50%;
+    height: 90%;
+    animation: modal-displayed 1s;
+
+    &-close {
+      position: absolute;
+      right: 3%;
+      top: 2%;
+    }
+
+    &-item {
+      border: 1px solid black;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      margin-top: 3em;
+      padding: 1em;
+      border-radius: 5px;
+      text-align: center;
+      font-size: larger;
+    }
+
+    &-item:hover {
+      border: 1px solid white;
+      box-shadow: rgba(255, 255, 255, 0.35) 0px 5px 15px;
+      color: white;
+    }
+
+    @keyframes modal-displayed {
+      0% {
+        opacity: 0%;
+      }
+      100% {
+        opacity: 100%;
+      }
+    }
+  }
+
+}
