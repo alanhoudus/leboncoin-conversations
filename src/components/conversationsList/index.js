@@ -11,7 +11,7 @@ import ConversationsList from './ConversationsList';
 
 const Conversations = () => {
   const userConversations = useSelector((state) => state.userProfile.userConversations);
-  const [startNewConvoIsDisplayed, setStarNewConvoIsDisplayed] = useState(false);
+  const [startNewConvoIsDisplayed, setStartNewConvoIsDisplayed] = useState(false);
 
   return (
     <div className="conversationslist">
@@ -20,7 +20,7 @@ const Conversations = () => {
       && (
       <Modal
         isDisplayed={startNewConvoIsDisplayed}
-        setIsDisplayed={setStarNewConvoIsDisplayed}
+        setIsDisplayed={setStartNewConvoIsDisplayed}
       />
       )}
       <MessageCircle
@@ -28,7 +28,7 @@ const Conversations = () => {
         color="white"
         className="conversationslist-new"
         onClick={() => {
-          setStarNewConvoIsDisplayed(!startNewConvoIsDisplayed);
+          setStartNewConvoIsDisplayed(!startNewConvoIsDisplayed);
         }}
       />
     </div>

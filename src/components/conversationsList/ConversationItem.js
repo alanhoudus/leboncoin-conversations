@@ -10,6 +10,7 @@ import timestampToDate from '../../selectors/messages';
 
 const ConversationItem = ({ conversation }) => {
   const activeUserId = useSelector((state) => state.userProfile.userId);
+  console.log(conversation);
   return (
     <Link
       to={`/messages/${conversation.id}`}
