@@ -6,7 +6,9 @@ import {
   messagesLoaded,
   saveConversationMessages,
   SEND_NEW_MESSAGE,
+  START_NEW_CONVERSATION,
 } from '../actions/messages';
+import findUser from '../selectors/users';
 
 const messagesMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -38,6 +40,28 @@ const messagesMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           console.log(response);
           store.dispatch(getConversationMessages(action.id));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      break;
+    case START_NEW_CONVERSATION:
+      axios.post(
+        // URL
+        `http://localhost:3005/conversations/${action.userId}`,
+        {
+          senderId: store.getState().userProfile.userId,
+          recipientNickname: findUser(store.getState().users.usersList, action.userId),
+          recipientId: action.userId,
+          senderNickname: findUser(
+            store.getState().users.usersList,
+            store.getState().userProfile.userId,
+          ),
+          lastMessageTimestamp: Date.now(),
+        },
+      )
+        .then((response) => {
+          console.log(response);
         })
         .catch((error) => {
           console.log(error);

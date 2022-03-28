@@ -39,7 +39,7 @@
     left: 25%;
     top: 5%;
     z-index: 10;
-    background-color: rgb(143, 160, 253);
+    background-color: rgb(112, 112, 112);
     border: 1px solid black;
     border-radius: 20px;
     padding: 2em;
@@ -61,6 +61,7 @@
       border-radius: 5px;
       text-align: center;
       font-size: larger;
+      color: white;
     }
 
     &-item:hover {

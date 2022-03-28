@@ -40,11 +40,6 @@ const Messages = () => {
             size="34"
           />
         </Link>
-        <div
-          className="messages-infos--conversation"
-        >
-          Conversation avec
-        </div>
       </div>
       <MessagesList conversationMessages={conversationMessages} />
       <form

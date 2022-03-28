@@ -25,7 +25,7 @@ const Conversations = () => {
       )}
       <MessageCircle
         size="60"
-        color="white"
+        color="black"
         className="conversationslist-new"
         onClick={() => {
           setStartNewConvoIsDisplayed(!startNewConvoIsDisplayed);
